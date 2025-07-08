@@ -1,4 +1,15 @@
 import React, { useEffect, useState } from "react";
+// Função simples de máscara para telefone brasileiro
+function maskPhone(value: string) {
+  // Remove tudo que não for número
+  let v = value.replace(/\D/g, "");
+  if (v.length > 11) v = v.slice(0, 11);
+  if (v.length > 0) v = '(' + v;
+  if (v.length > 3) v = v.slice(0, 3) + ') ' + v.slice(3);
+  if (v.length > 10) v = v.slice(0, 10) + '-' + v.slice(10);
+  else if (v.length > 6) v = v.slice(0, 9) + '-' + v.slice(9);
+  return v;
+}
 import { Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -251,9 +262,14 @@ export const PartnerFormSection: React.FC = () => {
                   <Input
                     id="whatsapp"
                     value={formData.whatsapp}
-                    onChange={(e) => handleInputChange("whatsapp", e.target.value)}
+                    onChange={(e) => {
+                      const masked = maskPhone(e.target.value);
+                      handleInputChange("whatsapp", masked);
+                    }}
                     className="mt-2 rounded-xl border-input"
                     placeholder="(65) 99999-9999"
+                    maxLength={15}
+                    inputMode="tel"
                     required
                   />
                 </div>
