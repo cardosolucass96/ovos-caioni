@@ -1,11 +1,12 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Send } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Send } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 interface FormData {
@@ -18,74 +19,113 @@ interface FormData {
   mensagem: string;
 }
 
-export const PartnerFormSection = () => {
+/**
+ * Formulário principal da LP para captação de leads B2B.
+ * Mantém validação mínima no front‑end e envia para o webhook n8n.
+ */
+export const PartnerFormSection: React.FC = () => {
+  /** toast helper */
   const { toast } = useToast();
+
+  /** estados */
   const [formData, setFormData] = useState<FormData>({
-    nome: '',
-    empresa: '',
-    cidade: '',
-    uf: '',
-    whatsapp: '',
-    volume: '',
-    mensagem: ''
+    nome: "",
+    empresa: "",
+    cidade: "",
+    uf: "",
+    whatsapp: "",
+    volume: "",
+    mensagem: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [utmParams, setUtmParams] = useState<Record<string, string>>({});
 
+  /** captura UTMs na montagem */
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const utms: Record<string, string> = {};
+    [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+    ].forEach((key) => {
+      const value = params.get(key);
+      if (value) utms[key] = value;
+    });
+    setUtmParams(utms);
+  }, []);
+
+  /** helper de atualização de campo */
   const handleInputChange = (field: keyof FormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
+  /** submit handler */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    // Basic validation
-    if (!formData.nome || !formData.empresa || !formData.cidade || !formData.uf || !formData.whatsapp) {
+    /** validação mínima */
+    const required = [
+      formData.nome,
+      formData.empresa,
+      formData.cidade,
+      formData.uf,
+      formData.whatsapp,
+    ];
+    if (required.some((v) => !v.trim())) {
       toast({
         title: "Campos obrigatórios",
-        description: "Por favor, preencha todos os campos obrigatórios.",
-        variant: "destructive"
+        description: "Preencha todos os campos marcados com *.",
+        variant: "destructive",
       });
-      setIsSubmitting(false);
       return;
     }
 
-    // Simulate form submission
+    setIsSubmitting(true);
+
+    /** envia para o webhook */
     try {
-      // Here you would typically send the data to your backend
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await fetch(
+        "https://webhook-n8n.grupovorp.com/webhook/ovos-caioni-lp",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...formData, utm: utmParams }),
+        }
+      );
+
       toast({
         title: "Proposta solicitada com sucesso!",
-        description: "Em breve entraremos em contato com informações personalizadas.",
+        description: "Em breve entraremos em contato.",
       });
-      
-      // Reset form
+
       setFormData({
-        nome: '',
-        empresa: '',
-        cidade: '',
-        uf: '',
-        whatsapp: '',
-        volume: '',
-        mensagem: ''
+        nome: "",
+        empresa: "",
+        cidade: "",
+        uf: "",
+        whatsapp: "",
+        volume: "",
+        mensagem: "",
       });
-    } catch (error) {
+    } catch (_) {
       toast({
         title: "Erro ao enviar",
-        description: "Tente novamente em alguns minutos.",
-        variant: "destructive"
+        description: "Tente novamente mais tarde.",
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  /** render */
   return (
     <section id="seja-nosso-parceiro" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-          
           {/* Header */}
           <div className="text-center mb-12">
             <h2 className="font-montserrat font-bold text-4xl md:text-5xl text-foreground mb-4">
@@ -108,7 +148,6 @@ export const PartnerFormSection = () => {
             </CardHeader>
             <CardContent className="p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
-                
                 {/* Nome */}
                 <div>
                   <Label htmlFor="nome" className="font-montserrat font-medium text-foreground">
@@ -117,7 +156,7 @@ export const PartnerFormSection = () => {
                   <Input
                     id="nome"
                     value={formData.nome}
-                    onChange={(e) => handleInputChange('nome', e.target.value)}
+                    onChange={(e) => handleInputChange("nome", e.target.value)}
                     className="mt-2 rounded-xl border-input"
                     placeholder="Seu nome completo"
                     required
@@ -132,14 +171,14 @@ export const PartnerFormSection = () => {
                   <Input
                     id="empresa"
                     value={formData.empresa}
-                    onChange={(e) => handleInputChange('empresa', e.target.value)}
+                    onChange={(e) => handleInputChange("empresa", e.target.value)}
                     className="mt-2 rounded-xl border-input"
                     placeholder="Nome da sua empresa"
                     required
                   />
                 </div>
 
-                {/* Cidade e UF */}
+                {/* Cidade / UF */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="md:col-span-2">
                     <Label htmlFor="cidade" className="font-montserrat font-medium text-foreground">
@@ -148,7 +187,7 @@ export const PartnerFormSection = () => {
                     <Input
                       id="cidade"
                       value={formData.cidade}
-                      onChange={(e) => handleInputChange('cidade', e.target.value)}
+                      onChange={(e) => handleInputChange("cidade", e.target.value)}
                       className="mt-2 rounded-xl border-input"
                       placeholder="Sua cidade"
                       required
@@ -158,17 +197,47 @@ export const PartnerFormSection = () => {
                     <Label htmlFor="uf" className="font-montserrat font-medium text-foreground">
                       UF *
                     </Label>
-                    <Select onValueChange={(value) => handleInputChange('uf', value)}>
+                    <Select
+                      value={formData.uf}
+                      onValueChange={(value) => handleInputChange("uf", value)}
+                    >
                       <SelectTrigger className="mt-2 rounded-xl border-input">
                         <SelectValue placeholder="UF" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="MT">MT</SelectItem>
-                        <SelectItem value="RO">RO</SelectItem>
-                        <SelectItem value="AC">AC</SelectItem>
-                        <SelectItem value="AM">AM</SelectItem>
-                        <SelectItem value="PA">PA</SelectItem>
-                        {/* Add more states as needed */}
+                        {[
+                          "AC",
+                          "AM",
+                          "AP",
+                          "PA",
+                          "RO",
+                          "RR",
+                          "TO",
+                          "MA",
+                          "PI",
+                          "CE",
+                          "RN",
+                          "PB",
+                          "PE",
+                          "AL",
+                          "SE",
+                          "BA",
+                          "MT",
+                          "MS",
+                          "GO",
+                          "DF",
+                          "SP",
+                          "RJ",
+                          "ES",
+                          "MG",
+                          "PR",
+                          "SC",
+                          "RS",
+                        ].map((uf) => (
+                          <SelectItem key={uf} value={uf}>
+                            {uf}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
@@ -182,7 +251,7 @@ export const PartnerFormSection = () => {
                   <Input
                     id="whatsapp"
                     value={formData.whatsapp}
-                    onChange={(e) => handleInputChange('whatsapp', e.target.value)}
+                    onChange={(e) => handleInputChange("whatsapp", e.target.value)}
                     className="mt-2 rounded-xl border-input"
                     placeholder="(65) 99999-9999"
                     required
@@ -194,14 +263,17 @@ export const PartnerFormSection = () => {
                   <Label htmlFor="volume" className="font-montserrat font-medium text-foreground">
                     Volume mensal estimado
                   </Label>
-                  <Select onValueChange={(value) => handleInputChange('volume', value)}>
+                  <Select
+                    value={formData.volume}
+                    onValueChange={(value) => handleInputChange("volume", value)}
+                  >
                     <SelectTrigger className="mt-2 rounded-xl border-input">
                       <SelectValue placeholder="Selecione o volume" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="ate-1000">Até 1.000 ovos</SelectItem>
-                      <SelectItem value="1000-5000">1.000 - 5.000 ovos</SelectItem>
-                      <SelectItem value="5000-10000">5.000 - 10.000 ovos</SelectItem>
+                      <SelectItem value="1000-5000">1.000 – 5.000 ovos</SelectItem>
+                      <SelectItem value="5000-10000">5.000 – 10.000 ovos</SelectItem>
                       <SelectItem value="mais-10000">Mais de 10.000 ovos</SelectItem>
                     </SelectContent>
                   </Select>
@@ -215,21 +287,21 @@ export const PartnerFormSection = () => {
                   <Textarea
                     id="mensagem"
                     value={formData.mensagem}
-                    onChange={(e) => handleInputChange('mensagem', e.target.value)}
+                    onChange={(e) => handleInputChange("mensagem", e.target.value)}
                     className="mt-2 rounded-xl border-input"
-                    placeholder="Conte-nos mais sobre suas necessidades..."
+                    placeholder="Conte-nos mais sobre suas necessidades…"
                     rows={4}
                   />
                 </div>
 
-                {/* Submit Button */}
+                {/* Botão */}
                 <Button
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full font-montserrat font-semibold text-lg py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl shadow-caioni transition-all duration-300 hover:shadow-caioni-lg"
                 >
                   {isSubmitting ? (
-                    "Enviando..."
+                    "Enviando…"
                   ) : (
                     <>
                       Solicitar proposta

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroBackground from "@/assets/hero-farm-background.jpg";
+import heroBackground from "@/assets/hero-family-background.jpg";
 
 export const HeroSection = () => {
   const scrollToPartner = () => {
@@ -34,7 +34,7 @@ export const HeroSection = () => {
           {/* Logo */}
           <div className="mb-8">
             <img 
-              src="/lovable-uploads/c278d620-d6cc-46a7-b98b-c2725ed6dc74.png" 
+              src="/src/assets/logo-caioni.svg" 
               alt="Ovos Caioni Logo" 
               className="h-20 md:h-24 mx-auto mb-6"
             />

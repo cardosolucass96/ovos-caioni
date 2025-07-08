@@ -9,7 +9,7 @@ export const Footer = () => {
           {/* Logo and Address */}
           <div className="text-center md:text-left">
             <img 
-              src="/lovable-uploads/c278d620-d6cc-46a7-b98b-c2725ed6dc74.png" 
+              src="/src/assets/logo-caioni.svg" 
               alt="Ovos Caioni Logo" 
               className="h-12 mx-auto md:mx-0 mb-4 filter brightness-0 invert"
             />
@@ -32,7 +32,7 @@ export const Footer = () => {
               </div>
               <div className="flex items-center space-x-2 justify-center">
                 <Instagram className="h-4 w-4" />
-                <span className="font-lato text-sm">@ovos.caioni</span>
+                <span className="font-lato text-sm">@granjacaioni</span>
               </div>
             </div>
           </div>
