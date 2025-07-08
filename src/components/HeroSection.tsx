@@ -34,7 +34,7 @@ export const HeroSection = () => {
           {/* Logo */}
           <div className="mb-8">
             <img 
-              src="/src/assets/logo-caioni.svg" 
+              src="/logo-caioni.svg" 
               alt="Ovos Caioni Logo" 
               className="h-20 md:h-24 mx-auto mb-6"
             />

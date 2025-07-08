@@ -9,7 +9,7 @@ export const Footer = () => {
           {/* Logo and Address */}
           <div className="text-center md:text-left">
             <img 
-              src="/src/assets/logo-caioni.svg" 
+              src="/logo-caioni.svg" 
               alt="Ovos Caioni Logo" 
               className="h-12 mx-auto md:mx-0 mb-4 filter brightness-0 invert"
             />

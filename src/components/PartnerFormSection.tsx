@@ -272,8 +272,8 @@ export const PartnerFormSection: React.FC = () => {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="ate-1000">Até 1.000 ovos</SelectItem>
-                      <SelectItem value="1000-5000">1.000 – 5.000 ovos</SelectItem>
-                      <SelectItem value="5000-10000">5.000 – 10.000 ovos</SelectItem>
+                      <SelectItem value="1000-5000">1.000 a 5.000 ovos</SelectItem>
+                      <SelectItem value="5000-10000">5.000 a 10.000 ovos</SelectItem>
                       <SelectItem value="mais-10000">Mais de 10.000 ovos</SelectItem>
                     </SelectContent>
                   </Select>
