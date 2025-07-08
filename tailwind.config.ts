@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'montserrat': ['Montserrat', 'sans-serif'],
+				'lato': ['Lato', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -62,6 +66,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			backgroundImage: {
+				'caioni-gradient': 'linear-gradient(135deg, hsl(var(--caioni-gradient-start)), hsl(var(--caioni-gradient-end)))',
+			},
+			boxShadow: {
+				'caioni': 'var(--caioni-shadow)',
+				'caioni-lg': 'var(--caioni-shadow-lg)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
