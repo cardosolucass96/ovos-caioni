@@ -26,37 +26,37 @@ interface Product {
 
 const products: readonly Product[] = [
   {
-    product: "Caioni Clássico 30",
+    product: "Ovos caioni 30",
     description:
-      "Bandeja econômica com 30 ovos vermelhos calibre médio — ideal para famílias e food service.",
+      "Bandeja econômica com 30 ovos calibres médio e grande — versatilidade e rendimento para o dia a dia.",
     icon: Package,
-    badge: "+ popular",
+    badge: "nosso clássico",
   },
   {
-    product: "Caioni Jumbo 20 (>70 g)",
+    product: "Ovos Caioni Jumbo 20 (>70 g)",
     description:
-      "Ovos extra‑grandes em bandeja de 20 un., perfeitos para padarias, cafeterias e público fitness.",
+      "Ovos vermelhos extra-grandes com mais de 70 g — mais sabor, mais rendimento e, com sorte… até duas gemas numa única unidade!",
     icon: Dumbbell,
     badge: "extra grande",
   },
   {
-    product: "Caioni Gourmet 18",
+    product: "Ovos Caioni 18",
     description:
-      "Seleção premium de 18 ovos vermelhos calibre grande — sabor e aparência superiores.",
+      "Seleção de ovos vermelhos calibres médio e grande — ideal para quem busca excelência em sabor e aparência.",
     icon: ShoppingBasket,
-    badge: "seleção especial",
+    badge: "queridinho da casa",
   },
   {
-    product: "Caioni Clássico 12 (dúzia)",
+    product: "Ovos Caioni 12",
     description:
-      "Nossa tradicional dúzia de ovos vermelhos calibre médio, campeã de vendas no dia a dia.",
+      "Nossa tradicional dúzia com ovos calibres médio e Grande — equilíbrio entre qualidade, frescor e praticidade.",
     icon: Egg,
-    badge: "mais vendido",
+    badge: "preferido por muitos",
   },
   {
-    product: "Caioni Clássico 6 (meia dúzia)",
+    product: "Ovos Caioni 6",
     description:
-      "Porção prática de 6 ovos para lares pequenos ou consumo ocasional — mesma qualidade Caioni.",
+      "Porção prática com os mesmos ovos vermelhos Caioni — ideal para compras menores ou consumo moderado.",
     icon: Box,
     badge: "porção prática",
   },
