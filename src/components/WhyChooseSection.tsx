@@ -10,7 +10,7 @@ const features = [
   {
     icon: Sparkles,
     title: "Qualidade que brilha na gema.",
-    description: "E embaixo- “Nutrição equilibrada que garante ovos com gema e clara mais consistentes, cor vibrante e frescor prolongado."
+    description: "Nutrição equilibrada que garante ovos com gema e clara mais consistentes, cor vibrante e frescor prolongado."
   },
   {
     icon: ShieldCheck,
@@ -42,7 +42,7 @@ export const WhyChooseSection = () => {
 
         <div className="text-center mb-8">
           <h2 className="font-montserrat font-bold text-4xl md:text-5xl text-foreground mb-4">
-            Por que escolher a Caioni?
+            Por que escolher Ovos Caioni?
           </h2>
           <img
             src="/logo-completa.svg"

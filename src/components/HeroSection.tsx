@@ -40,7 +40,7 @@ export const HeroSection = () => {
 
           {/* Main Headline */}
           <h1 className="font-montserrat font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight">
-            Ovos Caioni: frescor e carinho direto da nossa família para a sua mesa
+            Ovos Caioni: qualidade de verdade, direto da nossa família para a sua mesa
           </h1>
 
           {/* Sub-headline */}

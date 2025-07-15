@@ -1,12 +1,12 @@
 import { Check } from "lucide-react";
 
 const commitments = [
-  "Linhagem 80 % vermelha: gemas mais consistentes",
-  "Alimentação balanceada com vitaminas e ômega-3 (laudo em andamento)",
-  "Logística curta (10 km médios) reduz quebras e emissões"
+  "Aves com linhagem genética controlada, garantindo uniformidade e qualidade superior.",
+  "AFormulação alimentar precisa, assegurando o equilíbrio nutricional para a saúde e o desempenho das aves.",
+  "Logística com qualidade garantida, mantendo a integridade e o frescor dos ovos até o destino."
 ];
 
-export const CommitmentSection = () => {
+export const CommitmentSection = () => {  
   return (
     <section id="compromisso" className="py-20 bg-background">
   <div className="container mx-auto px-4">
