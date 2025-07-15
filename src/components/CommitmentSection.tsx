@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 
 const commitments = [
-  "Linhagem 80% vermelha → gema consistente",
+  "Linhagem 80 % vermelha: gemas mais consistentes",
   "Alimentação balanceada com vitaminas e ômega-3 (laudo em andamento)",
   "Logística curta (10 km médios) reduz quebras e emissões"
 ];
@@ -31,9 +31,13 @@ export const CommitmentSection = () => {
 
       {/* Conteúdo */}
       <div className="space-y-8">
-        <h2 className="font-montserrat font-bold text-4xl md:text-5xl text-foreground mb-6">
-          Compromisso Caioni em cada passo
+
+        <h2 className="font-montserrat font-bold text-4xl md:text-5xl text-foreground mb-2">
+          Compromisso com a qualidade
         </h2>
+        <p className="font-lato text-lg text-muted-foreground mb-6">
+          Ovo não é tudo igual. A Granja Caioni é uma empresa familiar que valoriza a tradição e o cuidado em cada detalhe. Desde a escolha dos grãos que alimentam nossas aves até o controle rigoroso de cada etapa da produção, garantimos que cada ovo carrega o nosso compromisso com a qualidade. Gemas cheias de sabor, prontas para enriquecer sua alimentação.
+        </p>
 
         <div className="space-y-4">
           {commitments.map((c, i) => (

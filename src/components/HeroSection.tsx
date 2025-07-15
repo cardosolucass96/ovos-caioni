@@ -47,7 +47,7 @@ export const HeroSection = () => {
 
           {/* Sub-headline */}
           <h2 className="font-lato text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Dedicação familiar e paixão pela qualidade há mais de uma década, entregando ovos criteriosos
+            Há mais de duas décadas, nossa dedicação e paixão pela qualidade produzem ovos que unem tradição, frescor e excelência em cada detalhe.
           </h2>
 
           {/* CTA Button */}
@@ -56,7 +56,7 @@ export const HeroSection = () => {
             size="lg"
             className="font-montserrat font-semibold text-lg px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl shadow-caioni-lg transition-all duration-300 hover:shadow-caioni hover:scale-105"
           >
-            Quero revender Caioni
+            Quero revender Ovos Caioni
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>

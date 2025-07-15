@@ -1,4 +1,11 @@
-import { Egg, Dumbbell, Leaf } from "lucide-react";
+import {
+  Egg,
+  Dumbbell,
+  Leaf,
+  ShoppingBasket,
+  Package,
+  Box,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -9,36 +16,67 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const products = [
+// =====================  CATÁLOGO COMPLETO (somente ícones)  =====================
+interface Product {
+  product: string;
+  description: string;
+  badge?: string;
+  icon: typeof Egg; // qualquer ícone do Lucide
+}
+
+const products: readonly Product[] = [
   {
-    product: "Caioni Clássico 6 / 12 / 30",
-    description: "Ovos vermelhos calibre médio, ideais para o dia a dia.",
-    icon: Egg,
-    badge: "mais vendido",
+    product: "Caioni Clássico 30",
+    description:
+      "Bandeja econômica com 30 ovos vermelhos calibre médio — ideal para famílias e food service.",
+    icon: Package,
+    badge: "+ popular",
   },
   {
-    product: "Caioni Jumbo 20",
-    description: "Ovos >70 g para padarias, cafeterias e público fitness.",
+    product: "Caioni Jumbo 20 (>70 g)",
+    description:
+      "Ovos extra‑grandes em bandeja de 20 un., perfeitos para padarias, cafeterias e público fitness.",
     icon: Dumbbell,
     badge: "extra grande",
   },
   {
-    product: "Caioni Caipira (piloto)",
-    description: "Gema alaranjada natural; lotes limitados sob reserva.",
-    icon: Leaf,
-    badge: "produção limitada",
+    product: "Caioni Gourmet 18",
+    description:
+      "Seleção premium de 18 ovos vermelhos calibre grande — sabor e aparência superiores.",
+    icon: ShoppingBasket,
+    badge: "seleção especial",
+  },
+  {
+    product: "Caioni Clássico 12 (dúzia)",
+    description:
+      "Nossa tradicional dúzia de ovos vermelhos calibre médio, campeã de vendas no dia a dia.",
+    icon: Egg,
+    badge: "mais vendido",
+  },
+  {
+    product: "Caioni Clássico 6 (meia dúzia)",
+    description:
+      "Porção prática de 6 ovos para lares pequenos ou consumo ocasional — mesma qualidade Caioni.",
+    icon: Box,
+    badge: "porção prática",
   },
 ] as const;
 
 export const ProductLineSection = () => (
   <section id="produtos" className="py-20 bg-background">
     <div className="container mx-auto px-4">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Título */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
           <h2 className="font-montserrat font-bold text-3xl sm:text-4xl md:text-5xl text-foreground mb-4">
             Nossa linha de produtos
           </h2>
+          <img
+            src="/ovos-ia.jpg"
+            alt="Ovos Caioni"
+            className="mx-auto rounded-2xl shadow-caioni max-w-full h-auto object-cover my-10"
+            style={{ maxHeight: '320px' }}
+          />
         </div>
 
         {/* =========================  MOBILE  ========================= */}
@@ -89,12 +127,10 @@ export const ProductLineSection = () => (
                   className="even:bg-muted/10 hover:bg-primary/5 transition-colors group"
                 >
                   <TableCell className="py-6 pl-6 flex items-center gap-3 font-montserrat font-medium text-foreground">
-                    {/* Ícone */}
                     <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-primary/10 text-primary group-hover:bg-primary/20">
                       <p.icon className="w-4 h-4" />
                     </span>
                     {p.product}
-                    {/* Badge opcional */}
                     {p.badge && (
                       <Badge variant="secondary" className="ml-3 whitespace-nowrap">
                         {p.badge}
@@ -112,7 +148,7 @@ export const ProductLineSection = () => (
 
         {/* Nota de rodapé */}
         <p className="mt-6 text-center font-lato text-xs sm:text-sm text-muted-foreground">
-          * Todos os produtos seguem padrões rigorosos de qualidade e frescor
+          * Todos os produtos seguem padrões rigorosos de qualidade e frescor.
         </p>
       </div>
     </div>
