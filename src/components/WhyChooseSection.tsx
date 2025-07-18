@@ -4,29 +4,52 @@ import { Card, CardContent } from "@/components/ui/card";
 const features = [
   {
     icon: Clock,
-    title: "Frescor em 24h",
-    description: "Do ninho ao ponto de venda em até um dia, preservando sabor e nutrientes."
+    title: "Frescor em cada ovo",
+    description: "Direto da nossa granja para sua mesa, preservando sabor e nutrientes."
   },
   {
     icon: Sparkles,
-    title: "Gema extra-amarela",
-    description: "Fórmula nutricional exclusiva garante cor viva, textura firme e mais sabor."
+    title: "Qualidade que brilha na gema.",
+    description: "Nutrição equilibrada que garante ovos com gema e clara mais consistentes, cor vibrante e frescor prolongado."
   },
   {
     icon: ShieldCheck,
     title: "Qualidade comprovada",
-    description: "Primeira granja regular no eixo Sinop–Alta Floresta; auditoria sanitária permanente."
+    description: "Cumprimos todas as exigências do MAPA, com fiscalização contínua que garante a qualidade dos nossos ovos."
   }
 ];
 
 export const WhyChooseSection = () => {
   return (
-    <section id="por-que-escolher" className="py-20 bg-caioni-gradient">
+    <section
+      id="por-que-escolher"
+      className="py-20 bg-caioni-gradient relative"
+      style={{
+        backgroundImage: "url('/bg-why.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <style>{`
+        @media (max-width: 767px) {
+          #por-que-escolher {
+            background-image: url('/bg-why-mobile.jpg') !important;
+          }
+        }
+      `}</style>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+
+        <div className="text-center mb-8">
           <h2 className="font-montserrat font-bold text-4xl md:text-5xl text-foreground mb-4">
-            Por que escolher a Caioni?
+            Por que escolher Ovos Caioni?
           </h2>
+          <img
+            src="/logo-completa.svg"
+            alt="Logo Caioni Completa"
+            className="mx-auto my-8"
+            style={{ maxWidth: '250px', width: '60%', height: 'auto' }}
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">

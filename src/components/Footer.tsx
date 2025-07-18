@@ -66,7 +66,7 @@ export const Footer = () => {
             © 2025 Ovos Caioni. Todos os direitos reservados.
           </p>
           <p className="font-lato text-xs text-background/60">
-            Laudo nutricional protocolado – divulgação prevista para out/2025.
+            Laudo nutricional protocolado.
           </p>
         </div>
       </div>

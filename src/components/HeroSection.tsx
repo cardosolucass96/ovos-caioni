@@ -2,13 +2,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import heroBackground from "@/assets/hero-family-background.jpg";
 
+
 export const HeroSection = () => {
-  const scrollToPartner = () => {
-    const partnerSection = document.getElementById('seja-nosso-parceiro');
-    if (partnerSection) {
-      partnerSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const whatsappNumber = '556696829987';
+  const whatsappMessage = encodeURIComponent('Olá, vim pelo site e queria saber mais sobre os Ovos Caioni');
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <section 
@@ -42,23 +40,31 @@ export const HeroSection = () => {
 
           {/* Main Headline */}
           <h1 className="font-montserrat font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight">
-            Ovos Caioni: frescor e carinho direto da nossa família para a sua mesa
+            Ovos Caioni: qualidade de verdade, direto da nossa família para a sua mesa
           </h1>
 
           {/* Sub-headline */}
           <h2 className="font-lato text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Dedicação familiar e paixão pela qualidade há mais de uma década, entregando ovos criteriosos
+            Há mais de duas décadas, nossa dedicação e paixão pela qualidade produzem ovos que unem tradição, frescor e excelência em cada detalhe.
           </h2>
 
           {/* CTA Button */}
-          <Button 
-            onClick={scrollToPartner}
-            size="lg"
-            className="font-montserrat font-semibold text-lg px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl shadow-caioni-lg transition-all duration-300 hover:shadow-caioni hover:scale-105"
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Quero revender Caioni
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+            <Button
+              asChild
+              size="lg"
+              className="font-montserrat font-semibold text-lg px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl shadow-caioni-lg transition-all duration-300 hover:shadow-caioni hover:scale-105"
+            >
+              <span>
+                Quero revender Ovos Caioni
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </span>
+            </Button>
+          </a>
         </div>
       </div>
 
