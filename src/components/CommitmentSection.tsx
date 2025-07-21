@@ -2,7 +2,7 @@ import { Check } from "lucide-react";
 
 const commitments = [
   "Aves com linhagem genética controlada, garantindo uniformidade e qualidade superior.",
-  "AFormulação alimentar precisa, assegurando o equilíbrio nutricional para a saúde e o desempenho das aves.",
+  "Formulação alimentar precisa, assegurando o equilíbrio nutricional para a saúde e o desempenho das aves.",
   "Logística com qualidade garantida, mantendo a integridade e o frescor dos ovos até o destino."
 ];
 

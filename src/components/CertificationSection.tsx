@@ -15,7 +15,7 @@ export const CertificationSection = () => {
 
           {/* Content */}
           <h2 className="font-montserrat font-bold text-3xl md:text-4xl text-foreground mb-4">
-            Inspecionada, segura, confiável.
+            Inspecionada, segura e confiável.
           </h2>
           
           <p className="font-lato text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
